@@ -115,11 +115,11 @@ If you want to use the same config file, you need to modify the properties:
 
 Before starting the web server, you have to execute `Chrome` enabling the `Chrome Debugging Protocol` (check from the script `bin/run_chrome_debugging.sh` if the path of Chrome is correct):
 ```bash
-sh bin/run_chrome_debugging.sh
+$ sh bin/run_chrome_debugging.sh
 ```
 Optionally, you can check if `Chrome` is running correctly:
 ```bash
-node build/test/integration/tester/chrome-debugging-protocol.js
+$ node build/test/integration/tester/chrome-debugging-protocol.js
 ```
 You should have:
 ```bash
@@ -127,11 +127,11 @@ You should have:
 ```
 At this point, you can execute `leena`:
 ```bash
-leena examples/browser/1/leena_config.json
+$ node bin/leena examples/browser/1/leena_config.json
 ```
 The server is running, so you can test all the global functions declared inside the files specified in the `files` property:
 ```bash
-node build/test/integration/api/browser-example-1/test-example-1.js
+$ node build/test/integration/api/browser-example-1/test-example-1.js
 ```
 The script summarizes the results in an [HTML page](https://htmlpreview.github.io/?https://github.com/mmicu/leena/blob/master/data/results/examples-browser-1.html).
 
