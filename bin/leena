@@ -1,0 +1,65 @@
+#!/usr/bin/env node
+
+'use strict';
+
+var fs = require ('fs');
+var path = require ('path');
+
+var chalk = require ('chalk');
+var options = require ('yargs');
+
+var init = require ('../build/src/back-end/init').initialize;
+var logger = require ('../build/src/back-end/logger');
+var utils = require ('../build/src/back-end/utils');
+
+
+var version = JSON.parse
+  (fs.readFileSync (path.join (__dirname, '..', 'package.json')).toString ())
+  .version;
+
+options = options
+  .usage ('Usage: $0 <config file> [Options]')
+  .command ('<config file>', 'Config file', { alias: 'config file' })
+  .option ('no-color', {
+    describe: 'Disable colored output.',
+    type: 'boolean'
+  })
+  .option ('s', {
+    alias: 'smt-solver',
+    describe: 'SMT-Solver to use.',
+    type: 'string'
+  })
+  .default ('s', 'z3')
+  .option ('v', {
+    alias: 'version',
+    describe: 'Print the version number.',
+    type: 'boolean'
+  })
+  .help ('h')
+  .alias ('h', 'help')
+  .argv;
+
+
+if (options.v) {
+  console.log (chalk.gray.bold.underline ('Version') + ' ' + version);
+  process.exit (0);
+}
+
+var configFile = options._[0];
+if (configFile === undefined) {
+  logger.error ('You must specify a config file');
+  process.exit (-1);
+}
+
+if (!utils.fileExists (configFile)) {
+  logger.error ('File "' + configFile + '" does not exist');
+  process.exit (-1);
+}
+
+var pathConfigFile = path.join (process.cwd (), configFile);
+
+try {
+  init (pathConfigFile, options.s);
+} catch (e) {
+  logger.error (e.message);
+}

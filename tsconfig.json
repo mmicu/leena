@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "outDir": "./build",
+    "removeComments": false,
+    "target": "es5",
+    "module": "commonjs"
+  },
+  "filesGlob": [
+    "./src/**/*.ts",
+    "./test/**/*.ts"
+  ],
+  "formatCodeOptions": {
+    "indentSize": 2,
+    "tabSize": 2
+  },
+  "atom": {
+    "rewriteTsconfig": false
+  },
+  "compileOnSave": true
+}

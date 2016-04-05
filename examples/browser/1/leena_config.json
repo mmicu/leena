@@ -1,0 +1,32 @@
+{
+  "browserSync": {
+    "watcher": {
+      "server": "<YOUR_PATH>/examples/browser/1",
+      "port": 4000,
+      "ui": {
+        "port": 4001
+      }
+    },
+    "webServer": {
+      "server": "<YOUR_PATH>/leena/temp/1",
+      "port": 4002,
+      "ui": {
+        "port": 4003
+      }
+    }
+  },
+  "chrome": {
+    "debuggingProtocol": {
+      "hostname": "localhost",
+      "port": 9222
+    },
+    "testerServer": {
+      "hostname": "localhost",
+      "port": 4004
+    }
+  },
+  "smt-solvers": {
+    "z3": "<YOUR_PATH>/z3"
+  },
+  "files": ["foo_1.js", "foo_2.js", "foo_3.js", "foo_4.js"]
+}

@@ -1,0 +1,1179 @@
+<!DOCTYPE html><html><head><title>examples/browser/1</title><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"><!-- Style resources--><style>/*
+Copyright (c) 2007, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.net/yui/license.txt
+version: 2.2.2
+*/
+/* for all templates and grids */
+body{text-align:center;}
+#ft{clear:both;}
+/**/
+/* 750 centered, and backward compatibility */
+#doc,#doc2,#doc3,.yui-t1,.yui-t2,.yui-t3,.yui-t4,.yui-t5,.yui-t6,.yui-t7 {
+	margin:auto;text-align:left;
+	width:57.69em;*width:56.3em;min-width:750px;}
+/* 950 centered */
+#doc2 {
+	width:73.074em;*width:71.313em;min-width:950px;}
+/* 100% with 10px viewport side matting */
+#doc3 {
+	margin:auto 10px; /* not for structure, but so content doesn't bleed to edge */
+	width:auto;}
+
+/* below required for all fluid grids; adjust widths and margins above accordingly */
+
+	/* to preserve source-order independence for Gecko */
+	.yui-b{position:relative;}
+	.yui-b{_position:static;} /* for IE < 7 */
+	#yui-main .yui-b{position:static;}
+
+#yui-main {width:100%;}
+.yui-t1 #yui-main,
+.yui-t2 #yui-main,
+.yui-t3 #yui-main{float:right;margin-left:-25em;/* IE: preserve layout at narrow widths */}
+
+.yui-t4 #yui-main,
+.yui-t5 #yui-main,
+.yui-t6 #yui-main{float:left;margin-right:-25em;/* IE: preserve layout at narrow widths */}
+
+.yui-t1 .yui-b {
+	float:left;
+    width:12.3207em;*width:12.0106em;}
+.yui-t1 #yui-main .yui-b{
+    margin-left:13.3207em;*margin-left:13.0106em;
+}
+
+.yui-t2 .yui-b {
+	float:left;
+    width:13.8456em;*width:13.512em;}
+.yui-t2 #yui-main .yui-b {
+    margin-left:14.8456em;*margin-left:14.512em;
+}
+
+.yui-t3 .yui-b {
+	float:left;
+    width:23.0759em;*width:22.52em;}
+.yui-t3 #yui-main .yui-b {
+    margin-left:24.0759em;*margin-left:23.52em;
+}
+
+.yui-t4 .yui-b {
+	float:right;
+    width:13.8456em;*width:13.512em;}
+.yui-t4 #yui-main .yui-b {
+    margin-right:14.8456em;*margin-right:14.512em;
+}
+
+.yui-t5 .yui-b {
+	float:right;
+    width:18.4608em;*width:18.016em;}
+.yui-t5 #yui-main .yui-b {
+    margin-right:19.4608em;*margin-right:19.016em;
+}
+
+.yui-t6 .yui-b {
+	float:right;
+    width:23.0759em;*width:22.52em;}
+.yui-t6 #yui-main .yui-b {
+    margin-right:24.0759em;*margin-right:23.52em;
+}
+
+.yui-t7 #yui-main .yui-b {
+	display:block;margin:0 0 1em 0;
+}
+#yui-main .yui-b {float:none;width:auto;}
+/* GRIDS (not TEMPLATES) */
+.yui-g .yui-u,
+.yui-g .yui-g,
+.yui-gc .yui-u,
+.yui-gc .yui-g .yui-u,
+.yui-ge .yui-u,
+.yui-gf .yui-u{float:right;display:inline;}
+.yui-g div.first,
+.yui-gc div.first,
+.yui-gc div.first div.first,
+.yui-gd div.first,
+.yui-ge div.first,
+.yui-gf div.first{float:left;}
+.yui-g .yui-u,
+.yui-g .yui-g{width:49.1%;}
+.yui-g .yui-g .yui-u,
+.yui-gc .yui-g .yui-u {width:48.1%;}
+.yui-gb .yui-u,
+.yui-gc .yui-u,
+.yui-gd .yui-u{float:left;margin-left:2%;*margin-left:1.895%;width:32%;}
+.yui-gb div.first,
+.yui-gc div.first,
+.yui-gd div.first{margin-left:0;}
+.yui-gc div.first,
+.yui-gd .yui-u{width:66%;}
+.yui-gd div.first{width:32%;}
+.yui-ge .yui-u{width:24%;}
+.yui-ge div.first,
+.yui-gf .yui-u{width:74.2%;}
+.yui-gf div.first{width:24%;}
+.yui-ge div.first{width:74.2%;}
+#bd:after,
+.yui-g:after,
+.yui-gb:after,
+.yui-gc:after,
+.yui-gd:after,
+.yui-ge:after,
+.yui-gf:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+#bd,
+.yui-g,
+.yui-gb,
+.yui-gc,
+.yui-gd,
+.yui-ge,
+.yui-gf{zoom:1;}
+
+
+/* Basic Element Formatting */
+
+#header{
+	height:50px;
+	/*background-color:#F3F2ED;*/
+	margin:0;
+	padding:0;
+	text-align:center;
+	}
+
+#header h1{
+	font-size:1em;
+	margin:0;
+	padding:10px;
+	}
+
+#header h1 a{
+	color:#000000;
+	background-color:#F3F2ED;
+	}
+
+.content{
+	height:auto;
+	/*background:#CCC8B3;*/
+	margin:0;
+	padding:0;
+	}
+
+#secondary{
+	height:300px;
+	background:#F6F0E0;
+	border-top:#FFFFFF 2px solid;
+	margin:0;
+	padding:0;
+	}
+
+#secondaryFull{
+	height:50px;
+	background-color:#CFB59F;
+	border-top:#FFFFFF 2px solid;
+	margin:0;
+	padding:0;
+	}
+
+#footer{
+	height:50px;
+	background:#BFBD93;
+	border-top:#FFFFFF 2px solid;
+	margin:0;
+	padding:0;
+	}
+</style><style>/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #998;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #333;
+  font-weight: bold;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: #008080;
+}
+
+.hljs-string,
+.hljs-doctag {
+  color: #d14;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: #900;
+  font-weight: bold;
+}
+
+.hljs-subst {
+  font-weight: normal;
+}
+
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #458;
+  font-weight: bold;
+}
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: #000080;
+  font-weight: normal;
+}
+
+.hljs-regexp,
+.hljs-link {
+  color: #009926;
+}
+
+.hljs-symbol,
+.hljs-bullet {
+  color: #990073;
+}
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #0086b3;
+}
+
+.hljs-meta {
+  color: #999;
+  font-weight: bold;
+}
+
+.hljs-deletion {
+  background: #fdd;
+}
+
+.hljs-addition {
+  background: #dfd;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+</style><!-- JavaScript resources--><script>/*! highlight.js v9.2.0 | BSD3 License | git.io/hljslicense */
+!function(e){var n="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typeof exports?e(exports):n&&(n.hljs=e({}),"function"==typeof define&&define.amd&&define([],function(){return n.hljs}))}(function(e){function n(e){return e.replace(/&/gm,"&amp;").replace(/</gm,"&lt;").replace(/>/gm,"&gt;")}function t(e){return e.nodeName.toLowerCase()}function r(e,n){var t=e&&e.exec(n);return t&&0==t.index}function a(e){return/^(no-?highlight|plain|text)$/i.test(e)}function i(e){var n,t,r,i=e.className+" ";if(i+=e.parentNode?e.parentNode.className:"",t=/\blang(?:uage)?-([\w-]+)\b/i.exec(i))return w(t[1])?t[1]:"no-highlight";for(i=i.split(/\s+/),n=0,r=i.length;r>n;n++)if(w(i[n])||a(i[n]))return i[n]}function o(e,n){var t,r={};for(t in e)r[t]=e[t];if(n)for(t in n)r[t]=n[t];return r}function u(e){var n=[];return function r(e,a){for(var i=e.firstChild;i;i=i.nextSibling)3==i.nodeType?a+=i.nodeValue.length:1==i.nodeType&&(n.push({event:"start",offset:a,node:i}),a=r(i,a),t(i).match(/br|hr|img|input/)||n.push({event:"stop",offset:a,node:i}));return a}(e,0),n}function c(e,r,a){function i(){return e.length&&r.length?e[0].offset!=r[0].offset?e[0].offset<r[0].offset?e:r:"start"==r[0].event?e:r:e.length?e:r}function o(e){function r(e){return" "+e.nodeName+'="'+n(e.value)+'"'}f+="<"+t(e)+Array.prototype.map.call(e.attributes,r).join("")+">"}function u(e){f+="</"+t(e)+">"}function c(e){("start"==e.event?o:u)(e.node)}for(var s=0,f="",l=[];e.length||r.length;){var g=i();if(f+=n(a.substr(s,g[0].offset-s)),s=g[0].offset,g==e){l.reverse().forEach(u);do c(g.splice(0,1)[0]),g=i();while(g==e&&g.length&&g[0].offset==s);l.reverse().forEach(o)}else"start"==g[0].event?l.push(g[0].node):l.pop(),c(g.splice(0,1)[0])}return f+n(a.substr(s))}function s(e){function n(e){return e&&e.source||e}function t(t,r){return new RegExp(n(t),"m"+(e.cI?"i":"")+(r?"g":""))}function r(a,i){if(!a.compiled){if(a.compiled=!0,a.k=a.k||a.bK,a.k){var u={},c=function(n,t){e.cI&&(t=t.toLowerCase()),t.split(" ").forEach(function(e){var t=e.split("|");u[t[0]]=[n,t[1]?Number(t[1]):1]})};"string"==typeof a.k?c("keyword",a.k):Object.keys(a.k).forEach(function(e){c(e,a.k[e])}),a.k=u}a.lR=t(a.l||/\b\w+\b/,!0),i&&(a.bK&&(a.b="\\b("+a.bK.split(" ").join("|")+")\\b"),a.b||(a.b=/\B|\b/),a.bR=t(a.b),a.e||a.eW||(a.e=/\B|\b/),a.e&&(a.eR=t(a.e)),a.tE=n(a.e)||"",a.eW&&i.tE&&(a.tE+=(a.e?"|":"")+i.tE)),a.i&&(a.iR=t(a.i)),void 0===a.r&&(a.r=1),a.c||(a.c=[]);var s=[];a.c.forEach(function(e){e.v?e.v.forEach(function(n){s.push(o(e,n))}):s.push("self"==e?a:e)}),a.c=s,a.c.forEach(function(e){r(e,a)}),a.starts&&r(a.starts,i);var f=a.c.map(function(e){return e.bK?"\\.?("+e.b+")\\.?":e.b}).concat([a.tE,a.i]).map(n).filter(Boolean);a.t=f.length?t(f.join("|"),!0):{exec:function(){return null}}}}r(e)}function f(e,t,a,i){function o(e,n){for(var t=0;t<n.c.length;t++)if(r(n.c[t].bR,e))return n.c[t]}function u(e,n){if(r(e.eR,n)){for(;e.endsParent&&e.parent;)e=e.parent;return e}return e.eW?u(e.parent,n):void 0}function c(e,n){return!a&&r(n.iR,e)}function g(e,n){var t=N.cI?n[0].toLowerCase():n[0];return e.k.hasOwnProperty(t)&&e.k[t]}function p(e,n,t,r){var a=r?"":E.classPrefix,i='<span class="'+a,o=t?"":"</span>";return i+=e+'">',i+n+o}function h(){if(!k.k)return n(M);var e="",t=0;k.lR.lastIndex=0;for(var r=k.lR.exec(M);r;){e+=n(M.substr(t,r.index-t));var a=g(k,r);a?(B+=a[1],e+=p(a[0],n(r[0]))):e+=n(r[0]),t=k.lR.lastIndex,r=k.lR.exec(M)}return e+n(M.substr(t))}function d(){var e="string"==typeof k.sL;if(e&&!R[k.sL])return n(M);var t=e?f(k.sL,M,!0,y[k.sL]):l(M,k.sL.length?k.sL:void 0);return k.r>0&&(B+=t.r),e&&(y[k.sL]=t.top),p(t.language,t.value,!1,!0)}function b(){L+=void 0!==k.sL?d():h(),M=""}function v(e,n){L+=e.cN?p(e.cN,"",!0):"",k=Object.create(e,{parent:{value:k}})}function m(e,n){if(M+=e,void 0===n)return b(),0;var t=o(n,k);if(t)return t.skip?M+=n:(t.eB&&(M+=n),b(),t.rB||t.eB||(M=n)),v(t,n),t.rB?0:n.length;var r=u(k,n);if(r){var a=k;a.skip?M+=n:(a.rE||a.eE||(M+=n),b(),a.eE&&(M=n));do k.cN&&(L+="</span>"),k.skip||(B+=k.r),k=k.parent;while(k!=r.parent);return r.starts&&v(r.starts,""),a.rE?0:n.length}if(c(n,k))throw new Error('Illegal lexeme "'+n+'" for mode "'+(k.cN||"<unnamed>")+'"');return M+=n,n.length||1}var N=w(e);if(!N)throw new Error('Unknown language: "'+e+'"');s(N);var x,k=i||N,y={},L="";for(x=k;x!=N;x=x.parent)x.cN&&(L=p(x.cN,"",!0)+L);var M="",B=0;try{for(var C,j,I=0;;){if(k.t.lastIndex=I,C=k.t.exec(t),!C)break;j=m(t.substr(I,C.index-I),C[0]),I=C.index+j}for(m(t.substr(I)),x=k;x.parent;x=x.parent)x.cN&&(L+="</span>");return{r:B,value:L,language:e,top:k}}catch(O){if(-1!=O.message.indexOf("Illegal"))return{r:0,value:n(t)};throw O}}function l(e,t){t=t||E.languages||Object.keys(R);var r={r:0,value:n(e)},a=r;return t.forEach(function(n){if(w(n)){var t=f(n,e,!1);t.language=n,t.r>a.r&&(a=t),t.r>r.r&&(a=r,r=t)}}),a.language&&(r.second_best=a),r}function g(e){return E.tabReplace&&(e=e.replace(/^((<[^>]+>|\t)+)/gm,function(e,n){return n.replace(/\t/g,E.tabReplace)})),E.useBR&&(e=e.replace(/\n/g,"<br>")),e}function p(e,n,t){var r=n?x[n]:t,a=[e.trim()];return e.match(/\bhljs\b/)||a.push("hljs"),-1===e.indexOf(r)&&a.push(r),a.join(" ").trim()}function h(e){var n=i(e);if(!a(n)){var t;E.useBR?(t=document.createElementNS("http://www.w3.org/1999/xhtml","div"),t.innerHTML=e.innerHTML.replace(/\n/g,"").replace(/<br[ \/]*>/g,"\n")):t=e;var r=t.textContent,o=n?f(n,r,!0):l(r),s=u(t);if(s.length){var h=document.createElementNS("http://www.w3.org/1999/xhtml","div");h.innerHTML=o.value,o.value=c(s,u(h),r)}o.value=g(o.value),e.innerHTML=o.value,e.className=p(e.className,n,o.language),e.result={language:o.language,re:o.r},o.second_best&&(e.second_best={language:o.second_best.language,re:o.second_best.r})}}function d(e){E=o(E,e)}function b(){if(!b.called){b.called=!0;var e=document.querySelectorAll("pre code");Array.prototype.forEach.call(e,h)}}function v(){addEventListener("DOMContentLoaded",b,!1),addEventListener("load",b,!1)}function m(n,t){var r=R[n]=t(e);r.aliases&&r.aliases.forEach(function(e){x[e]=n})}function N(){return Object.keys(R)}function w(e){return e=(e||"").toLowerCase(),R[e]||R[x[e]]}var E={classPrefix:"hljs-",tabReplace:null,useBR:!1,languages:void 0},R={},x={};return e.highlight=f,e.highlightAuto=l,e.fixMarkup=g,e.highlightBlock=h,e.configure=d,e.initHighlighting=b,e.initHighlightingOnLoad=v,e.registerLanguage=m,e.listLanguages=N,e.getLanguage=w,e.inherit=o,e.IR="[a-zA-Z]\\w*",e.UIR="[a-zA-Z_]\\w*",e.NR="\\b\\d+(\\.\\d+)?",e.CNR="(-?)(\\b0[xX][a-fA-F0-9]+|(\\b\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)",e.BNR="\\b(0b[01]+)",e.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|-|-=|/=|/|:|;|<<|<<=|<=|<|===|==|=|>>>=|>>=|>=|>>>|>>|>|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~",e.BE={b:"\\\\[\\s\\S]",r:0},e.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[e.BE]},e.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[e.BE]},e.PWM={b:/\b(a|an|the|are|I|I'm|isn't|don't|doesn't|won't|but|just|should|pretty|simply|enough|gonna|going|wtf|so|such|will|you|your|like)\b/},e.C=function(n,t,r){var a=e.inherit({cN:"comment",b:n,e:t,c:[]},r||{});return a.c.push(e.PWM),a.c.push({cN:"doctag",b:"(?:TODO|FIXME|NOTE|BUG|XXX):",r:0}),a},e.CLCM=e.C("//","$"),e.CBCM=e.C("/\\*","\\*/"),e.HCM=e.C("#","$"),e.NM={cN:"number",b:e.NR,r:0},e.CNM={cN:"number",b:e.CNR,r:0},e.BNM={cN:"number",b:e.BNR,r:0},e.CSSNM={cN:"number",b:e.NR+"(%|em|ex|ch|rem|vw|vh|vmin|vmax|cm|mm|in|pt|pc|px|deg|grad|rad|turn|s|ms|Hz|kHz|dpi|dpcm|dppx)?",r:0},e.RM={cN:"regexp",b:/\//,e:/\/[gimuy]*/,i:/\n/,c:[e.BE,{b:/\[/,e:/\]/,r:0,c:[e.BE]}]},e.TM={cN:"title",b:e.IR,r:0},e.UTM={cN:"title",b:e.UIR,r:0},e.METHOD_GUARD={b:"\\.\\s*"+e.UIR,r:0},e});hljs.registerLanguage("javascript",function(e){return{aliases:["js","jsx"],k:{keyword:"in of if for while finally var new function do return void else break catch instanceof with throw case default try this switch continue typeof delete let yield const export super debugger as async await static import from as",literal:"true false null undefined NaN Infinity",built_in:"eval isFinite isNaN parseFloat parseInt decodeURI decodeURIComponent encodeURI encodeURIComponent escape unescape Object Function Boolean Error EvalError InternalError RangeError ReferenceError StopIteration SyntaxError TypeError URIError Number Math Date String RegExp Array Float32Array Float64Array Int16Array Int32Array Int8Array Uint16Array Uint32Array Uint8Array Uint8ClampedArray ArrayBuffer DataView JSON Intl arguments require module console window document Symbol Set Map WeakSet WeakMap Proxy Reflect Promise"},c:[{cN:"meta",r:10,b:/^\s*['"]use (strict|asm)['"]/},{cN:"meta",b:/^#!/,e:/$/},e.ASM,e.QSM,{cN:"string",b:"`",e:"`",c:[e.BE,{cN:"subst",b:"\\$\\{",e:"\\}"}]},e.CLCM,e.CBCM,{cN:"number",v:[{b:"\\b(0[bB][01]+)"},{b:"\\b(0[oO][0-7]+)"},{b:e.CNR}],r:0},{b:"("+e.RSR+"|\\b(case|return|throw)\\b)\\s*",k:"return throw case",c:[e.CLCM,e.CBCM,e.RM,{b:/</,e:/(\/\w+|\w+\/)>/,sL:"xml",c:[{b:/<\w+\/>/,skip:!0},{b:/<\w+/,e:/(\/\w+|\w+\/)>/,skip:!0,c:["self"]}]}],r:0},{cN:"function",bK:"function",e:/\{/,eE:!0,c:[e.inherit(e.TM,{b:/[A-Za-z$_][0-9A-Za-z$_]*/}),{cN:"params",b:/\(/,e:/\)/,eB:!0,eE:!0,c:[e.CLCM,e.CBCM]}],i:/\[|%/},{b:/\$[(.]/},e.METHOD_GUARD,{cN:"class",bK:"class",e:/[{;=]/,eE:!0,i:/[:"\[\]]/,c:[{bK:"extends"},e.UTM]},{bK:"constructor",e:/\{/,eE:!0}],i:/#(?!!)/}});hljs.registerLanguage("json",function(e){var i={literal:"true false null"},n=[e.QSM,e.CNM],r={e:",",eW:!0,eE:!0,c:n,k:i},t={b:"{",e:"}",c:[{cN:"attr",b:/"/,e:/"/,c:[e.BE],i:"\\n"},e.inherit(r,{b:/:/})],i:"\\S"},c={b:"\\[",e:"\\]",c:[e.inherit(r)],i:"\\S"};return n.splice(n.length,0,t,c),{c:n,k:i,i:"\\S"}});</script><script type="text/javascript">hljs.initHighlightingOnLoad ();</script></head><body><div id="doc" class="yui-t7"><div id="hd"><div id="header"><h1>Application examples/browser/1</h1></div></div><div id="bd"><div id="yui-main"><div class="yui-b"><div class="yui-g"><div class="yui-u first"><div class="content"><p style="text-align: center;"><strong>Function</strong></p><pre><code class="javascript">function f_1_0(x) {
+    if (x == 1) {
+        return 1;
+    } else if (x == 2) {
+        return 2;
+    } else if (x == 3) {
+        return 3;
+    }
+    return -1;
+}</code></pre></div></div><div class="yui-u"><div class="content"><p style="text-align: center;"><strong>Leena response object</strong></p><pre><code class="json">{
+  &quot;errors&quot;: [],
+  &quot;testCases&quot;: [
+    {
+      &quot;x&quot;: 0
+    },
+    {
+      &quot;x&quot;: 3
+    },
+    {
+      &quot;x&quot;: 2
+    },
+    {
+      &quot;x&quot;: 1
+    }
+  ],
+  &quot;results&quot;: [
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: -1,
+      &quot;description&quot;: &quot;-1&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 3,
+      &quot;description&quot;: &quot;3&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 2,
+      &quot;description&quot;: &quot;2&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 1,
+      &quot;description&quot;: &quot;1&quot;
+    }
+  ]
+}</code></pre></div></div></div></div></div><div id="yui-main"><div class="yui-b"><div class="yui-g"><div class="yui-u first"><div class="content"><p style="text-align: center;"><strong>Function</strong></p><pre><code class="javascript">function f_1_1(x) {
+    if (x == 1) {
+        return 1;
+    } else if (x == 2) {
+        return 2;
+    } else if (x == 3) {
+        return 3;
+    }
+    return -1;
+}</code></pre></div></div><div class="yui-u"><div class="content"><p style="text-align: center;"><strong>Leena response object</strong></p><pre><code class="json">{
+  &quot;errors&quot;: [],
+  &quot;testCases&quot;: [
+    {
+      &quot;x&quot;: 10
+    },
+    {
+      &quot;x&quot;: 3
+    },
+    {
+      &quot;x&quot;: 2
+    },
+    {
+      &quot;x&quot;: 1
+    }
+  ],
+  &quot;results&quot;: [
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: -1,
+      &quot;description&quot;: &quot;-1&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 3,
+      &quot;description&quot;: &quot;3&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 2,
+      &quot;description&quot;: &quot;2&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 1,
+      &quot;description&quot;: &quot;1&quot;
+    }
+  ]
+}</code></pre></div></div></div></div></div><div id="yui-main"><div class="yui-b"><div class="yui-g"><div class="yui-u first"><div class="content"><p style="text-align: center;"><strong>Function</strong></p><pre><code class="javascript">function f_1_2(x) {
+    if (x == 1 || x == 2) {
+        return '1 or 2';
+    } else if (x == 3 || x &gt; 3) {
+        return '3 or &gt; 3';
+    }
+    return -1;
+}</code></pre></div></div><div class="yui-u"><div class="content"><p style="text-align: center;"><strong>Leena response object</strong></p><pre><code class="json">{
+  &quot;errors&quot;: [],
+  &quot;testCases&quot;: [
+    {
+      &quot;x&quot;: 10
+    },
+    {
+      &quot;x&quot;: 0
+    },
+    {
+      &quot;x&quot;: 1
+    }
+  ],
+  &quot;results&quot;: [
+    {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;value&quot;: &quot;3 or &gt; 3&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: -1,
+      &quot;description&quot;: &quot;-1&quot;
+    },
+    {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;value&quot;: &quot;1 or 2&quot;
+    }
+  ]
+}</code></pre></div></div></div></div></div><div id="yui-main"><div class="yui-b"><div class="yui-g"><div class="yui-u first"><div class="content"><p style="text-align: center;"><strong>Function</strong></p><pre><code class="javascript">function f_1_3(x, y, z) {
+    if (x == 1 &amp;&amp; y == 1) {
+        return 1;
+    } else if (x == 2 || y == 1) {
+        return 2;
+    } else if (x == 3 &amp;&amp; z == 2) {
+        return 3;
+    } else if (z == 190) {
+        return 4;
+    } else {
+        return -1;
+    }
+}</code></pre></div></div><div class="yui-u"><div class="content"><p style="text-align: center;"><strong>Leena response object</strong></p><pre><code class="json">{
+  &quot;errors&quot;: [],
+  &quot;testCases&quot;: [
+    {
+      &quot;x&quot;: 10,
+      &quot;y&quot;: 231,
+      &quot;z&quot;: 23131
+    },
+    {
+      &quot;x&quot;: 3,
+      &quot;y&quot;: 2,
+      &quot;z&quot;: 190
+    },
+    {
+      &quot;x&quot;: 3,
+      &quot;y&quot;: 2,
+      &quot;z&quot;: 2
+    },
+    {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 1,
+      &quot;z&quot;: 2
+    },
+    {
+      &quot;x&quot;: 1,
+      &quot;y&quot;: 1,
+      &quot;z&quot;: 2
+    }
+  ],
+  &quot;results&quot;: [
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: -1,
+      &quot;description&quot;: &quot;-1&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 4,
+      &quot;description&quot;: &quot;4&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 3,
+      &quot;description&quot;: &quot;3&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 2,
+      &quot;description&quot;: &quot;2&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 1,
+      &quot;description&quot;: &quot;1&quot;
+    }
+  ]
+}</code></pre></div></div></div></div></div><div id="yui-main"><div class="yui-b"><div class="yui-g"><div class="yui-u first"><div class="content"><p style="text-align: center;"><strong>Function</strong></p><pre><code class="javascript">function f_1_4(a, b) {
+    if (a &gt; 0) {
+        if (a == 19) {
+            if (b == 0) {
+                return 1;
+            } else {
+                return 2;
+            }
+        }
+    } else {
+        if (a == -1) {
+            return 3;
+        } else if (a == -90) {
+            return 4;
+        }
+    }
+    return -1;
+}</code></pre></div></div><div class="yui-u"><div class="content"><p style="text-align: center;"><strong>Leena response object</strong></p><pre><code class="json">{
+  &quot;errors&quot;: [],
+  &quot;testCases&quot;: [
+    {
+      &quot;a&quot;: 10,
+      &quot;b&quot;: 231
+    },
+    {
+      &quot;a&quot;: 19,
+      &quot;b&quot;: 231
+    },
+    {
+      &quot;a&quot;: 19,
+      &quot;b&quot;: 0
+    },
+    {
+      &quot;a&quot;: 0,
+      &quot;b&quot;: 0
+    },
+    {
+      &quot;a&quot;: -90,
+      &quot;b&quot;: 0
+    },
+    {
+      &quot;a&quot;: -1,
+      &quot;b&quot;: 0
+    }
+  ],
+  &quot;results&quot;: [
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: -1,
+      &quot;description&quot;: &quot;-1&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 2,
+      &quot;description&quot;: &quot;2&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 1,
+      &quot;description&quot;: &quot;1&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: -1,
+      &quot;description&quot;: &quot;-1&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 4,
+      &quot;description&quot;: &quot;4&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 3,
+      &quot;description&quot;: &quot;3&quot;
+    }
+  ]
+}</code></pre></div></div></div></div></div><div id="yui-main"><div class="yui-b"><div class="yui-g"><div class="yui-u first"><div class="content"><p style="text-align: center;"><strong>Function</strong></p><pre><code class="javascript">function f_2_0(x, y) {
+    if (x == 0) {
+        if (y == 0) {
+        } else if (y == 1) {
+        }
+    } else if (x == 1) {
+    } else {
+        return y == 3131 ? 10 : 11;
+    }
+}</code></pre></div></div><div class="yui-u"><div class="content"><p style="text-align: center;"><strong>Leena response object</strong></p><pre><code class="json">{
+  &quot;errors&quot;: [],
+  &quot;testCases&quot;: [
+    {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 2
+    },
+    {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 1
+    },
+    {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 0
+    },
+    {
+      &quot;x&quot;: 1,
+      &quot;y&quot;: 0
+    },
+    {
+      &quot;x&quot;: 2,
+      &quot;y&quot;: 0
+    },
+    {
+      &quot;x&quot;: 2,
+      &quot;y&quot;: 3131
+    }
+  ],
+  &quot;results&quot;: [
+    {
+      &quot;type&quot;: &quot;undefined&quot;
+    },
+    {
+      &quot;type&quot;: &quot;undefined&quot;
+    },
+    {
+      &quot;type&quot;: &quot;undefined&quot;
+    },
+    {
+      &quot;type&quot;: &quot;undefined&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 11,
+      &quot;description&quot;: &quot;11&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 10,
+      &quot;description&quot;: &quot;10&quot;
+    }
+  ]
+}</code></pre></div></div></div></div></div><div id="yui-main"><div class="yui-b"><div class="yui-g"><div class="yui-u first"><div class="content"><p style="text-align: center;"><strong>Function</strong></p><pre><code class="javascript">function f_2_1(x) {
+    if (x == 1) {
+        return 1;
+    } else if (x == 2) {
+        return 2;
+    } else if (x == 3) {
+        return 3;
+    }
+}</code></pre></div></div><div class="yui-u"><div class="content"><p style="text-align: center;"><strong>Leena response object</strong></p><pre><code class="json">{
+  &quot;errors&quot;: [],
+  &quot;testCases&quot;: [
+    {
+      &quot;x&quot;: 10
+    },
+    {
+      &quot;x&quot;: 3
+    },
+    {
+      &quot;x&quot;: 2
+    },
+    {
+      &quot;x&quot;: 1
+    }
+  ],
+  &quot;results&quot;: [
+    {
+      &quot;type&quot;: &quot;undefined&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 3,
+      &quot;description&quot;: &quot;3&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 2,
+      &quot;description&quot;: &quot;2&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 1,
+      &quot;description&quot;: &quot;1&quot;
+    }
+  ]
+}</code></pre></div></div></div></div></div><div id="yui-main"><div class="yui-b"><div class="yui-g"><div class="yui-u first"><div class="content"><p style="text-align: center;"><strong>Function</strong></p><pre><code class="javascript">function f_2_2(x) {
+    if (x == 1) {
+    } else if (x == 2) {
+    } else if (x == 3) {
+    }
+}</code></pre></div></div><div class="yui-u"><div class="content"><p style="text-align: center;"><strong>Leena response object</strong></p><pre><code class="json">{
+  &quot;errors&quot;: [],
+  &quot;testCases&quot;: [
+    {
+      &quot;x&quot;: 10
+    },
+    {
+      &quot;x&quot;: 3
+    },
+    {
+      &quot;x&quot;: 2
+    },
+    {
+      &quot;x&quot;: 1
+    }
+  ],
+  &quot;results&quot;: [
+    {
+      &quot;type&quot;: &quot;undefined&quot;
+    },
+    {
+      &quot;type&quot;: &quot;undefined&quot;
+    },
+    {
+      &quot;type&quot;: &quot;undefined&quot;
+    },
+    {
+      &quot;type&quot;: &quot;undefined&quot;
+    }
+  ]
+}</code></pre></div></div></div></div></div><div id="yui-main"><div class="yui-b"><div class="yui-g"><div class="yui-u first"><div class="content"><p style="text-align: center;"><strong>Function</strong></p><pre><code class="javascript">function f_2_3(x, y, z) {
+    if (x == 1 &amp;&amp; y == 1) {
+    } else if (x == 2 || y == 1) {
+    } else if (x == 3 &amp;&amp; z == 2) {
+    } else if (z == 190) {
+    } else {
+    }
+}</code></pre></div></div><div class="yui-u"><div class="content"><p style="text-align: center;"><strong>Leena response object</strong></p><pre><code class="json">{
+  &quot;errors&quot;: [],
+  &quot;testCases&quot;: [
+    {
+      &quot;x&quot;: 10,
+      &quot;y&quot;: 231,
+      &quot;z&quot;: 23131
+    },
+    {
+      &quot;x&quot;: 3,
+      &quot;y&quot;: 2,
+      &quot;z&quot;: 190
+    },
+    {
+      &quot;x&quot;: 3,
+      &quot;y&quot;: 2,
+      &quot;z&quot;: 2
+    },
+    {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 1,
+      &quot;z&quot;: 2
+    },
+    {
+      &quot;x&quot;: 1,
+      &quot;y&quot;: 1,
+      &quot;z&quot;: 2
+    }
+  ],
+  &quot;results&quot;: [
+    {
+      &quot;type&quot;: &quot;undefined&quot;
+    },
+    {
+      &quot;type&quot;: &quot;undefined&quot;
+    },
+    {
+      &quot;type&quot;: &quot;undefined&quot;
+    },
+    {
+      &quot;type&quot;: &quot;undefined&quot;
+    },
+    {
+      &quot;type&quot;: &quot;undefined&quot;
+    }
+  ]
+}</code></pre></div></div></div></div></div><div id="yui-main"><div class="yui-b"><div class="yui-g"><div class="yui-u first"><div class="content"><p style="text-align: center;"><strong>Function</strong></p><pre><code class="javascript">function f_2_4(a, b) {
+    if (a &gt; 0) {
+        if (a == 19) {
+            if (b == 0) {
+                return 1;
+            } else {
+                return 0;
+            }
+        }
+    } else {
+        if (a == -1) {
+            return 0;
+        } else if (a == -90) {
+            return 1;
+        }
+    }
+    return 180;
+}</code></pre></div></div><div class="yui-u"><div class="content"><p style="text-align: center;"><strong>Leena response object</strong></p><pre><code class="json">{
+  &quot;errors&quot;: [],
+  &quot;testCases&quot;: [
+    {
+      &quot;a&quot;: 10,
+      &quot;b&quot;: 231
+    },
+    {
+      &quot;a&quot;: 19,
+      &quot;b&quot;: 231
+    },
+    {
+      &quot;a&quot;: 19,
+      &quot;b&quot;: 0
+    },
+    {
+      &quot;a&quot;: 0,
+      &quot;b&quot;: 0
+    },
+    {
+      &quot;a&quot;: -90,
+      &quot;b&quot;: 0
+    },
+    {
+      &quot;a&quot;: -1,
+      &quot;b&quot;: 0
+    }
+  ],
+  &quot;results&quot;: [
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 180,
+      &quot;description&quot;: &quot;180&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 0,
+      &quot;description&quot;: &quot;0&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 1,
+      &quot;description&quot;: &quot;1&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 180,
+      &quot;description&quot;: &quot;180&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 1,
+      &quot;description&quot;: &quot;1&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 0,
+      &quot;description&quot;: &quot;0&quot;
+    }
+  ]
+}</code></pre></div></div></div></div></div><div id="yui-main"><div class="yui-b"><div class="yui-g"><div class="yui-u first"><div class="content"><p style="text-align: center;"><strong>Function</strong></p><pre><code class="javascript">function f_3_0(x, y) {
+    x = x + 1;
+    y = y + 1;
+    var p = x + y;
+    p *= 2;
+    if (p == 0) {
+        return 0;
+    } else {
+        return 1;
+    }
+}</code></pre></div></div><div class="yui-u"><div class="content"><p style="text-align: center;"><strong>Leena response object</strong></p><pre><code class="json">{
+  &quot;errors&quot;: [],
+  &quot;testCases&quot;: [
+    {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 0
+    },
+    {
+      &quot;x&quot;: -2,
+      &quot;y&quot;: 0
+    }
+  ],
+  &quot;results&quot;: [
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 1,
+      &quot;description&quot;: &quot;1&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 0,
+      &quot;description&quot;: &quot;0&quot;
+    }
+  ]
+}</code></pre></div></div></div></div></div><div id="yui-main"><div class="yui-b"><div class="yui-g"><div class="yui-u first"><div class="content"><p style="text-align: center;"><strong>Function</strong></p><pre><code class="javascript">function f_3_1(x, y) {
+    var a = x * y;
+    var b = a * 2;
+    if (b == 190) {
+        return 'b = 190';
+    } else {
+        return 'b != 190';
+    }
+}</code></pre></div></div><div class="yui-u"><div class="content"><p style="text-align: center;"><strong>Leena response object</strong></p><pre><code class="json">{
+  &quot;errors&quot;: [],
+  &quot;testCases&quot;: [
+    {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 0
+    },
+    {
+      &quot;x&quot;: 95,
+      &quot;y&quot;: 1
+    }
+  ],
+  &quot;results&quot;: [
+    {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;value&quot;: &quot;b != 190&quot;
+    },
+    {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;value&quot;: &quot;b = 190&quot;
+    }
+  ]
+}</code></pre></div></div></div></div></div><div id="yui-main"><div class="yui-b"><div class="yui-g"><div class="yui-u first"><div class="content"><p style="text-align: center;"><strong>Function</strong></p><pre><code class="javascript">function f_3_2(x, y) {
+    var a = x * y;
+    var b = a * 2;
+    return b == 800 ? 'b  = 190' : 'b != 190';
+}</code></pre></div></div><div class="yui-u"><div class="content"><p style="text-align: center;"><strong>Leena response object</strong></p><pre><code class="json">{
+  &quot;errors&quot;: [],
+  &quot;testCases&quot;: [
+    {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 0
+    },
+    {
+      &quot;x&quot;: 400,
+      &quot;y&quot;: 1
+    }
+  ],
+  &quot;results&quot;: [
+    {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;value&quot;: &quot;b != 190&quot;
+    },
+    {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;value&quot;: &quot;b  = 190&quot;
+    }
+  ]
+}</code></pre></div></div></div></div></div><div id="yui-main"><div class="yui-b"><div class="yui-g"><div class="yui-u first"><div class="content"><p style="text-align: center;"><strong>Function</strong></p><pre><code class="javascript">function f_3_3(x) {
+    var a = x + 10;
+    a += 100;
+    a *= 2;
+    if (a == 500) {
+        return 'a = 500';
+    } else {
+        return 'a != 500';
+    }
+}</code></pre></div></div><div class="yui-u"><div class="content"><p style="text-align: center;"><strong>Leena response object</strong></p><pre><code class="json">{
+  &quot;errors&quot;: [],
+  &quot;testCases&quot;: [
+    {
+      &quot;x&quot;: 0
+    },
+    {
+      &quot;x&quot;: 140
+    }
+  ],
+  &quot;results&quot;: [
+    {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;value&quot;: &quot;a != 500&quot;
+    },
+    {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;value&quot;: &quot;a = 500&quot;
+    }
+  ]
+}</code></pre></div></div></div></div></div><div id="yui-main"><div class="yui-b"><div class="yui-g"><div class="yui-u first"><div class="content"><p style="text-align: center;"><strong>Function</strong></p><pre><code class="javascript">function f_3_4(x, y) {
+    var p = x + y;
+    p *= x + y;
+    p += 100;
+    if (p == 100) {
+        return 'p = 100';
+    } else {
+        return 'p != 100';
+    }
+}</code></pre></div></div><div class="yui-u"><div class="content"><p style="text-align: center;"><strong>Leena response object</strong></p><pre><code class="json">{
+  &quot;errors&quot;: [],
+  &quot;testCases&quot;: [
+    {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 0
+    },
+    {
+      &quot;x&quot;: 4,
+      &quot;y&quot;: 0
+    }
+  ],
+  &quot;results&quot;: [
+    {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;value&quot;: &quot;p = 100&quot;
+    },
+    {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;value&quot;: &quot;p != 100&quot;
+    }
+  ]
+}</code></pre></div></div></div></div></div><div id="yui-main"><div class="yui-b"><div class="yui-g"><div class="yui-u first"><div class="content"><p style="text-align: center;"><strong>Function</strong></p><pre><code class="javascript">function f_4_0(x, y) {
+    if (x &gt; 0) {
+        return y &gt; 0 ? 1 : 0;
+    } else if (x &lt; 0) {
+        if (y == 1) {
+            return x == -1 ? -1 : 0;
+        } else if (y == 2) {
+            return x == -2 ? -1 : 0;
+        } else {
+            return x == -3 ? -1 : 0;
+        }
+    }
+}</code></pre></div></div><div class="yui-u"><div class="content"><p style="text-align: center;"><strong>Leena response object</strong></p><pre><code class="json">{
+  &quot;errors&quot;: [],
+  &quot;testCases&quot;: [
+    {
+      &quot;x&quot;: 0,
+      &quot;y&quot;: 0
+    },
+    {
+      &quot;x&quot;: -1,
+      &quot;y&quot;: 0
+    },
+    {
+      &quot;x&quot;: -3,
+      &quot;y&quot;: 3
+    },
+    {
+      &quot;x&quot;: -1,
+      &quot;y&quot;: 2
+    },
+    {
+      &quot;x&quot;: -2,
+      &quot;y&quot;: 2
+    },
+    {
+      &quot;x&quot;: -1,
+      &quot;y&quot;: 1
+    },
+    {
+      &quot;x&quot;: -2,
+      &quot;y&quot;: 1
+    },
+    {
+      &quot;x&quot;: 1,
+      &quot;y&quot;: 1
+    },
+    {
+      &quot;x&quot;: 1,
+      &quot;y&quot;: 0
+    }
+  ],
+  &quot;results&quot;: [
+    {
+      &quot;type&quot;: &quot;undefined&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 0,
+      &quot;description&quot;: &quot;0&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: -1,
+      &quot;description&quot;: &quot;-1&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 0,
+      &quot;description&quot;: &quot;0&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: -1,
+      &quot;description&quot;: &quot;-1&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: -1,
+      &quot;description&quot;: &quot;-1&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 0,
+      &quot;description&quot;: &quot;0&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 1,
+      &quot;description&quot;: &quot;1&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 0,
+      &quot;description&quot;: &quot;0&quot;
+    }
+  ]
+}</code></pre></div></div></div></div></div><div id="yui-main"><div class="yui-b"><div class="yui-g"><div class="yui-u first"><div class="content"><p style="text-align: center;"><strong>Function</strong></p><pre><code class="javascript">function f_4_1(a) {
+    var b = a + 1;
+    b -= 100;
+    if (b == 1) {
+        return 'b = 1';
+    } else {
+        return 'b != 1';
+    }
+}</code></pre></div></div><div class="yui-u"><div class="content"><p style="text-align: center;"><strong>Leena response object</strong></p><pre><code class="json">{
+  &quot;errors&quot;: [],
+  &quot;testCases&quot;: [
+    {
+      &quot;a&quot;: 0
+    },
+    {
+      &quot;a&quot;: 100
+    }
+  ],
+  &quot;results&quot;: [
+    {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;value&quot;: &quot;b != 1&quot;
+    },
+    {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;value&quot;: &quot;b = 1&quot;
+    }
+  ]
+}</code></pre></div></div></div></div></div><div id="yui-main"><div class="yui-b"><div class="yui-g"><div class="yui-u first"><div class="content"><p style="text-align: center;"><strong>Function</strong></p><pre><code class="javascript">function f_4_2(a, b) {
+    var b = a + 1;
+    return b == 1 ? 'b = 1' : 'b != 1';
+}</code></pre></div></div><div class="yui-u"><div class="content"><p style="text-align: center;"><strong>Leena response object</strong></p><pre><code class="json">{
+  &quot;errors&quot;: [],
+  &quot;testCases&quot;: [
+    {
+      &quot;a&quot;: 10,
+      &quot;b&quot;: 10
+    },
+    {
+      &quot;a&quot;: 0,
+      &quot;b&quot;: 10
+    }
+  ],
+  &quot;results&quot;: [
+    {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;value&quot;: &quot;b != 1&quot;
+    },
+    {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;value&quot;: &quot;b = 1&quot;
+    }
+  ]
+}</code></pre></div></div></div></div></div><div id="yui-main"><div class="yui-b"><div class="yui-g"><div class="yui-u first"><div class="content"><p style="text-align: center;"><strong>Function</strong></p><pre><code class="javascript">function f_4_3(a, b) {
+    return a == b * 100 ? 1 : 0;
+}</code></pre></div></div><div class="yui-u"><div class="content"><p style="text-align: center;"><strong>Leena response object</strong></p><pre><code class="json">{
+  &quot;errors&quot;: [],
+  &quot;testCases&quot;: [
+    {
+      &quot;a&quot;: 0,
+      &quot;b&quot;: 0
+    },
+    {
+      &quot;a&quot;: 1,
+      &quot;b&quot;: 0
+    }
+  ],
+  &quot;results&quot;: [
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 1,
+      &quot;description&quot;: &quot;1&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 0,
+      &quot;description&quot;: &quot;0&quot;
+    }
+  ]
+}</code></pre></div></div></div></div></div><div id="yui-main"><div class="yui-b"><div class="yui-g"><div class="yui-u first"><div class="content"><p style="text-align: center;"><strong>Function</strong></p><pre><code class="javascript">function f_4_4(a, b) {
+    return a == b * 56 - 45 ? 1 : 0;
+}</code></pre></div></div><div class="yui-u"><div class="content"><p style="text-align: center;"><strong>Leena response object</strong></p><pre><code class="json">{
+  &quot;errors&quot;: [],
+  &quot;testCases&quot;: [
+    {
+      &quot;a&quot;: 0,
+      &quot;b&quot;: 0
+    },
+    {
+      &quot;a&quot;: -45,
+      &quot;b&quot;: 0
+    }
+  ],
+  &quot;results&quot;: [
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 0,
+      &quot;description&quot;: &quot;0&quot;
+    },
+    {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;value&quot;: 1,
+      &quot;description&quot;: &quot;1&quot;
+    }
+  ]
+}</code></pre></div></div></div></div></div></div></div></body></html>

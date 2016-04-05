@@ -1,0 +1,46 @@
+doctype html
+html
+  head
+    title #{title}
+    meta(http-equiv='Content-Type', content='text/html; charset=iso-8859-1')
+    
+    // Style resources
+    style
+      include ./stylesheets/styles.css
+    
+    style
+      include ./stylesheets/github.css
+    
+    // JavaScript resources
+    script
+      include ./javascripts/highlight.pack.js
+
+    script(type='text/javascript').
+      hljs.initHighlightingOnLoad ();
+  body
+    #doc.yui-t7
+      #hd
+        #header
+          h1 Application #{title}
+      #bd
+        - for (var k = 0; k < fSources.length; k++)
+          #yui-main
+            .yui-b
+              .yui-g
+                .yui-u.first
+                  .content
+                    p(style='text-align: center;')
+                      strong Function
+                    pre
+                      code(class='javascript').
+                        #{fSources[k]}
+                .yui-u
+                  .content
+                    p(style='text-align: center;')
+                      strong Leena response object
+                    pre
+                      if (k >= leenaResponseObject.length)
+                        p Unknown response object
+                      else
+                        code(class='json').
+                          #{leenaResponseObject[k]}
